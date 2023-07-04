@@ -4,11 +4,21 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:test": "vue-cli-service serve --mode testing",
+    "serve:stage": "vue-cli-service serve --mode staging",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build:test": "vue-cli-service build --mode testing",
+    "build:stage": "vue-cli-service build --mode staging",
+    "lint": "vue-cli-service lint",
+    "prettier": "prettier --write .",
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "element-ui": "^2.15.13",
+    "husky": "^8.0.3",
+    "js-cookie": "^3.0.5",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
@@ -21,14 +31,25 @@
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^8.0.3",
+    "husky": "^8.0.0",
     "lint-staged": "^11.1.2",
+    "prettier": "^2.8.8",
     "sass": "^1.32.7",
     "sass-loader": "^12.0.0",
     "vue-template-compiler": "^2.6.14"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
