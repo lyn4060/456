@@ -7,7 +7,7 @@ module.exports = defineConfig({
   outputDir: "dist",
   assetsDir: "assets",
   devServer: {
-    port: 8080,
+    port: 8888,
     open: true,
     https: false,
     host: "0.0.0.0",
@@ -20,7 +20,14 @@ module.exports = defineConfig({
       secure: false,
       target: "",
       pathRewrite: {
-        "^/api": ""
+        [process.env.VUE_APP_BASE_API]: {
+          changeOrigin: true,
+          secure: false,
+          target: process.env.VUE_APP_CONSOLE_URL,
+          pathRewrite: {
+            ["^" + process.env.VUE_APP_BASE_API]: ""
+          }
+        }
       }
     }
   }
